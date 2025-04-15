@@ -9,19 +9,24 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "next": "15.3.0"
+    "@fluentui/react-components": "^9.61.6",
+    "@fluentui/react-icons": "^2.0.297",
+    "js-base64": "^3.7.7",
+    "next": "15.3.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "yaml": "^2.7.1"
   },
   "devDependencies": {
-    "typescript": "^5",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
+    "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4",
+    "@types/lodash.debounce": "^4.0.9",
+    "@types/node": "^20",
+    "@types/react": "18.3.20",
+    "@types/react-dom": "18.3.6",
     "eslint": "^9",
     "eslint-config-next": "15.3.0",
-    "@eslint/eslintrc": "^3"
+    "tailwindcss": "^4",
+    "typescript": "^5"
   }
 }
