@@ -153,7 +153,7 @@ const newRules = (config) => {
 }
 
 // 生成代理组规则
-const newProxyGroupsRules = (rules) => rules.proxyGroups.flatMap(group => {
+const newProxyGroupsRules = () => proxyGroups.flatMap(group => {
   const rules = []
 
   if (group.domainKeywords && group.domainKeywords.length > 0) {
@@ -173,11 +173,11 @@ const newProxyGroupsRules = (rules) => rules.proxyGroups.flatMap(group => {
 })
 
 // 生成代理组
-const newProxyGroups = (config, rules) => {
+const newProxyGroups = (config) => {
   const defaultProxy = config['proxy-groups'][0].name;
   const proxies = config.proxies.map(proxy => proxy.name);
 
-  return rules.proxyGroups.map(group => {
+  return proxyGroups.map(group => {
     const filteredProxies = group.filters.length > 0
       ? proxies.filter(proxy => group.filters.some(filter => proxy.toLowerCase().includes(filter.toLowerCase())))
       : proxies;
@@ -197,7 +197,7 @@ const newProxyGroups = (config, rules) => {
 const main = (config) => {
   config.rules = [
     ...newRules(config),
-    ...newProxyGroupsRules,
+    ...newProxyGroupsRules(),
     ...config.rules,
   ]
   config['proxy-groups'].splice(1, 0, ...newProxyGroups(config))
