@@ -153,7 +153,7 @@ const newRules = (config) => {
 }
 
 // 生成代理组规则
-const newProxyGroupsRules = (rules: Rules) => rules.proxyGroups.flatMap(group => {
+const newProxyGroupsRules = (rules) => rules.proxyGroups.flatMap(group => {
   const rules = []
 
   if (group.domainKeywords && group.domainKeywords.length > 0) {
@@ -173,7 +173,7 @@ const newProxyGroupsRules = (rules: Rules) => rules.proxyGroups.flatMap(group =>
 })
 
 // 生成代理组
-const newProxyGroups = (config: Config, rules: Rules) => {
+const newProxyGroups = (config, rules) => {
   const defaultProxy = config['proxy-groups'][0].name;
   const proxies = config.proxies.map(proxy => proxy.name);
 
