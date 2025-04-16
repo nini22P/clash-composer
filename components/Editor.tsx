@@ -15,7 +15,7 @@ export default function Editor() {
 
   const [subUrl, setSubUrl] = useState('')
 
-  const [rules, setRules] = useState(() => decodeRules(searchParams.get('rules')) || defaultRules)
+  const [rules, setRules] = useState(() => decodeRules(searchParams.get('rules')) || emptyRules)
 
   const createQueryString = useCallback(
     (name: string, value: string) => {

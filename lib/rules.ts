@@ -89,7 +89,7 @@ export const defaultRules: Rules = {
     {
       name: 'E-Hentai',
       directFirst: false,
-      filters: ['US', 'EU', 'UnitedStates', '美国', 'FR'],
+      filters: ['US', 'EU', 'UnitedStates', 'FR', '美国',],
       domains: ['e-hentai.org', 'exhentai.org'],
       domainKeywords: [],
       geoSites: [],
@@ -98,7 +98,7 @@ export const defaultRules: Rules = {
     {
       name: 'DLsite',
       directFirst: false,
-      filters: ['japan', '日本', 'jp'],
+      filters: ['japan', 'jp', '日本',],
       domains: ['dlsite.com'],
       domainKeywords: [],
       geoSites: [],
