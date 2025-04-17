@@ -19,7 +19,12 @@ export async function GET(request: NextRequest) {
 
   try {
     const url = decodeURIComponent(sub)
-    const response = await fetch(url.endsWith('&flag=meta') ? url : url.concat('&flag=meta'))
+    const response = await fetch(
+      url.includes('?')
+        ? url.endsWith('&flag=meta')
+          ? url
+          : url.concat('&flag=meta')
+        : url)
 
     if (!response.ok) {
       return new Response(response.statusText, { status: response.status })
