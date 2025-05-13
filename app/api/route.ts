@@ -7,11 +7,15 @@ export const runtime = 'edge'
 
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
-  const rules = decodeRules(searchParams.get('rules'));
+  const rules = searchParams.get('rules');
   const sub = searchParams.get('sub');
 
-  if (!rules || !sub) {
-    return new Response('Missing rules or sub', { status: 400 })
+  if (!rules) {
+    return new Response('Missing rules', { status: 400 })
+  }
+
+  if (!sub) {
+    return new Response('Missing sub', { status: 400 })
   }
 
   let config: Config
@@ -38,7 +42,29 @@ export async function GET(request: NextRequest) {
     return new Response('Error fetching sub', { status: 500 })
   }
 
-  const newConfig = getNewConfig(config, rules)
+  let decodedRules
+
+  try {
+    decodedRules = decodeRules(rules)
+  } catch (e) {
+    console.log(e)
+  }
+
+  if (!decodedRules) {
+    return new Response('Error decoding rules', { status: 500 })
+  }
+
+  let newConfig
+
+  try {
+    newConfig = getNewConfig(config, decodedRules)
+  } catch (e) {
+    console.log(e)
+  }
+
+  if (!newConfig) {
+    return new Response('Error generating new config', { status: 500 })
+  }
 
   return new Response(
     YAML.stringify(newConfig),
