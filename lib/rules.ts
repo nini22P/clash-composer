@@ -43,12 +43,12 @@ export const defaultRules: Rules = {
   proxyDomains: ['dl.tailscale.com'],
   proxyIPs: [],
   proxyGeoSites: ['github'],
-  proxyGeoIPs: ['github'],
+  proxyGeoIPs: [],
   directDomainKeywords: [],
   directDomains: ['bgm.tv'],
   directIPs: ['192.168.0.0/24'],
   directGeoSites: ['tailscale'],
-  directGeoIPs: ['tailscale'],
+  directGeoIPs: [],
   proxyGroups: [
     {
       name: 'Google',
@@ -89,7 +89,7 @@ export const defaultRules: Rules = {
     {
       name: 'E-Hentai',
       directFirst: false,
-      filters: ['US', 'EU', 'UnitedStates', 'FR', '美国',],
+      filters: ['US', 'EU', 'UnitedStates', 'FR', '美国'],
       domains: ['e-hentai.org', 'exhentai.org'],
       domainKeywords: [],
       geoSites: [],
@@ -98,12 +98,21 @@ export const defaultRules: Rules = {
     {
       name: 'DLsite',
       directFirst: false,
-      filters: ['japan', 'jp', '日本',],
+      filters: ['japan', 'jp', '日本'],
       domains: ['dlsite.com'],
       domainKeywords: [],
       geoSites: [],
       geoIPs: [],
     },
+    {
+      name: 'Steam',
+      directFirst: true,
+      filters: [],
+      domains: [],
+      domainKeywords: [],
+      geoSites: ['steam'],
+      geoIPs: [],
+    }
   ],
 }
 
